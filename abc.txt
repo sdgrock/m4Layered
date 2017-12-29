@@ -1,0 +1,261 @@
+Inheritance Hierarchy
+System.Object
+  System.Attribute
+    System.Diagnostics.ConditionalAttribute
+
+You can apply the ConditionalAttribute attribute to methods and classes. 
+However, its use on classes is valid only for types that are derived from Attribute. 
+ConditionalAttribute either will be ignored or will 
+produce a compiler warning or error message if you apply it to any other type.
+
+A conditional attribute is a tag used to mark a method or class whose execution 
+depends on the definition of preprocessing identifier.
+
+
+The preprocessor directives give instruction to the compiler to preprocess the 
+information before actual compilation starts.
+
+All preprocessor directives begin with #, and only white-space characters may appear before a 
+preprocessor directive on a line. 
+Preprocessor directives are not statements, so they do not end with a semicolon (;).
+C# compiler does not have a separate preprocessor; however, 
+the directives are processed as if there was one.
+In C# the preprocessor directives are used to help in conditional compilation.
+
+AJAX- ASYNCHRONOUS JAVASCRIPT AND XML:
+
+We can:
+
+Update a web page without reloading the page
+Request data from a server - after the page has loaded
+Receive data from a server - after the page has loaded
+Send data to a server - in the background
+
+EXPLICIT IMPLEMENTATION OF INTERFACE:
+
+ interface Iinterface_1
+
+{
+
+    void interface1_method();
+
+}
+
+ 
+
+class Demo : Iinterface_1
+
+{
+
+    public void Display()
+
+    {
+
+        Console.WriteLine("Demo Display Method.");
+
+    }
+       
+     //Explicit interface implementation
+     void Iinterface_1.interface1_method()
+
+    {
+
+        Console.WriteLine("Iinterface_1 Method.");
+
+    }
+
+     //Implicit interface implementation
+      public void interface1_method()
+      {
+
+	Console.WriteLine("Iinterface_1 Method.");
+
+      }
+
+}
+
+class Program
+
+{
+
+    static void Main(string[] args)
+
+    {
+
+        Demo obj = new Demo();
+
+        obj.Display();
+
+    }
+
+}
+
+
+}
+
+EXPLICIT IMPLEMENTATION OF TWO INTERFACES IN SAME CLASS
+
+interface Iinterface_1
+
+{
+
+    void interface1_method();
+
+}
+
+ 
+
+interface Iinterface_2
+
+{
+
+    void interface2_method();
+
+}
+
+ 
+
+class Class1 : Iinterface_1, Iinterface_2
+
+{
+
+    public void Display()
+
+    {
+
+        Console.WriteLine("Class1 Display Method.");
+
+    }
+
+ 
+
+    public void interface1_method()
+
+    {
+
+        Console.WriteLine("Iinterface_1 Method.");
+
+    }
+
+ 
+
+    public void interface2_method()
+
+    {
+
+        Console.WriteLine("Iinterface_2 Method.");
+
+    }
+
+}
+
+ 
+
+class Program
+
+{
+
+    static void Main(string[] args)
+
+    {
+
+        Iinterface_1 obj_1 = new Class1();
+
+        obj_1.interface1_method();
+
+ 
+
+        Iinterface_2 obj_2 = new Class1();
+
+        obj_2.interface2_method();
+
+ 
+
+        Console.ReadLine();
+
+    }
+
+}
+
+CONVERT/PARSE/INT PARSE:
+
+int.Parse(string s)
+Simply, int.Parse (string s) method converts the string to integer. 
+If string s is null, then it will throw ArgumentNullException. 
+If string s is other than integer value, then it will throw FormatException. 
+If string s represents out of integer ranges, then it will throw OverflowException.
+
+Example
+
+//
+// int.Parse(string s)
+//
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string str1="9009";
+            string str2=null;
+            string str3="9009.9090800";
+            string str4="90909809099090909900900909090909"; 
+            int finalResult;
+            finalResult = int.Parse(str1); //success
+            finalResult = int.Parse(str2); // ArgumentNullException
+            finalResult = int.Parse(str3); //FormatException
+            finalResult = int.Parse(str4); //OverflowException 
+        }
+    } 
+Convert.ToInt32(string s)
+Simply, Convert.ToInt32(string s) method converts the string to integer.
+If string s is null, then it will return 0 rather than throw ArgumentNullException. 
+If string s is other than integer value, then it will throw FormatException. 
+If string s represents out of integer ranges, then it will throw OverflowException.
+
+Example
+
+//
+// Convert.ToInt32(string s)
+//
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string str1="9009";
+            string str2=null;
+            string str3="9009.9090800";
+            string str4="90909809099090909900900909090909"; 
+            int finalResult;
+            finalResult = Convert.ToInt32(str1); // 9009
+            finalResult = Convert.ToInt32(str2); // 0
+            finalResult = Convert.ToInt32(str3); //FormatException
+            finalResult = Convert.ToInt32(str4); //OverflowException 
+        }
+    }
+int.TryParse(string s,Out)
+Simply int.TryParse(string s,out int) method converts the string to integer out variable and returns true
+ if successfully parsed, otherwise false. 
+If string s is null, then the out variable has 0 rather than throw ArgumentNullException. 
+If string s is other than integer value, then the out variable will have 0 rather than FormatException. 
+If string s represents out of integer ranges, then the out variable will have 0 rather than throw OverflowException.
+
+Example
+
+//
+// Convert.ToInt32(string s)
+//
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string str1="9009";
+            string str2=null;
+            string str3="9009.9090800";
+            string str4="90909809099090909900900909090909"; 
+            int finalResult;
+            bool output;
+            output = int.TryParse(str1,out finalResult); // 9009
+            output = int.TryParse(str2,out finalResult); // 0
+            output = int.TryParse(str3,out finalResult); // 0
+            output = int.TryParse(str4, out finalResult); // 0 
+        }
+    }

@@ -1,0 +1,131 @@
+IIS- Internet Information Services
+
+Default Web site home- IIS
+C-Drive - inetpub(if there then IIS is installed)- wwwroot(website hosting)
+deployment or publishing the web file
+Right click on application and publish.
+
+localhost/_______ (where it will find the file?? it will go to the wwwroot amd search for the file)
+
+http Handler 
+http modules
+
+to run the web page, extension is  .aspx
+who handles the aspx request??? 
+in IIS, the .aspx is mapped through an APPLICATION EXTENSIOM THAT IS MAPPED TO the asp.net ISAPI dll
+
+
+Every request that fires asp.net must go through an extension that is registered and points at aspnet_isapi.dll
+
+%windir\Microsoft.NET\Framework64\v4.0.30319\aspnet_isapi.dll
+
+Multipurpose Internet Mail Extensions (MIME)-
+
+-click on Default Web site home
+-double click on MIME
+-In ACTION PAN, click ADD
+-In the add mime type dialog box, type a file name extension in the textbox
+-Type a MIME type in the MIME type text box. ...
+-Click OK
+
+HttpModule vs HttpHandler-
+
+HttpHandler is the process which runs in response to http request
+.aspx web page
+.asmx web service
+.asax web user control
+.axd handler that displays trace information
+
+for any request, there can be multiple modules in between pipeline to reach the handler
+Httpmodules are plugged in to request life cycle.
+modules may be authentication, security, authorization, logging etc
+
+IIS 5 hosts aspnet_isapi dll directly in the inetinfo.exe process
+In IIS 6, the worker process is w3wp.exe.
+
+Application pool is the container of worker process.
+In application pool there are application domains.
+Application Pool is used to separatesets of IIS worker processes that share the
+same configuration(web.config)
+
+Deployment- Publishing on IIS 
+Virtual Directory
+
+AutoEventWireup-
+
+When AutoEventWireup is true, handlers are automatically bound to events at run time
+based on their name and signature. For each event, ASP.NET searches for a method
+that is named according to the pattern Page_eventname, such as Page_Load or Page_Init.
+
+onClick- handler binding
+
+Code declaration block-
+<script runat ="server">
+
+Code render block
+<% %>
+
+machine.config machine level,
+web.config application or part level
+
+use of global.aspx-
+
+Global.asax is an optional file which is used to handle higher level application events
+such as Application_Start, Application_End, Session_Start, Session_End etc.
+It is also popularly known as ASP.NET Application File. 
+This file resides in the root directory of an ASP.NET-based application.
+
+Tracing and debugging
+
+<system.web>
+<compilation debug="false">
+</system.web>
+
+home-> customer-> add customer
+
+sitemap breadcrumb
+
+web.sitemap
+
+add treeview
+
+Server.Transfer("webpage2.aspx") for redirection between same application pages(inside the application)
+     vs
+Response.Redirect("webpage2.aspx") for redirecting to any url(outside the application)
+
+Unobstrusive validation-
+prior to asp.net 4.5 validation controls automatically creates lot of javascript code 
+for client side validation, now these are added as attribute to controls tags rather than code
+
+UnobstrusivevalidationMode WebForms or none(for older version)
+
+Repeater vs GridView / Form View
+Repeater is light weight
+Templates- (alternate template- color change)
+
+The Repeater and GridView controls are used differently. 
+A GridView control is used when you want to display a set of data in a table format. 
+A Repeater is when you want to display data repeatedly, but not necessarily in a tabular format. 
+If you want a table, use a GridView, otherwise use a Repeater.
+
+GridView - Read/Edit
+
+DataList - Read/Edit
+
+Repeater - Read Only
+
+DetailsView - Read/Edit/Create
+
+FormView - Read/Edit/Create
+
+
+
+Session vs application(not thread safe) vs cache(thread safe)
+
+
+
+
+
+
+
+

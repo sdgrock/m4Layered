@@ -1,0 +1,100 @@
+ASP.NET:
+this technology is for the server
+IAS- Server
+Browser-Client
+
+Request response architecture..
+
+EXTENSION- .aspx (web form file)
+	   .aspx.cs (code behind file)
+
+code behind file- having all the event handlers and designs on the same file
+
+<%@......%> -page directive
+
+Controls- client site control(machine is having the code)
+
+	- server site control(when i click on button...it is happening in the server site )
+(application is not in our machine...it works or runs in server because code is in the server)
+<asp:
+runat server
+
+go to designs at the bottom to add button
+
+POST BACK-
+Going to the server and server yields a value back
+(post and return back)
+
+Rendering- when page is available to display 
+
+Load will run after the design time.
+ so items added in design will display first and then if more things added on load it will also display
+
+After load the priority is event handler
+so, event handler message will be displayed and label1 text will be overridden
+
+S Request start
+I Initialize
+L Load
+V Validations
+E Event Handlers
+R Rendering
+U Unload
+
+VIEW STATE-
+
+http protocol is stateless so asp view state does a lot of things to maintain its state
+(it makes the asp dot net a bit heavy)
+
+Disabling ViewState for controls-
+(Data will be less, lighter round trip)
+
+If we disable the viewstate, dn label will take the default message as set in the design view
+
+Whenever i change the value in the control it should hit the server
+
+cb.SelectedItem.Value
+cb.SelectedItem.Text
+
+Auto PostBack
+
+For error in form change in app config,
+<configuration>
+<appSettings>
+<add key="ValidationSettings:Unobtrusive Validation Mode" value="None">
+<add>
+</appSettings>
+</configuration>
+
+
+private void addRemove(ListBox ListBox1, ListBox ListBox2)
+{
+if(ListBox1.SelectedIndex != -1)
+{
+foreach(ListItem li in ListBox1.Items)
+{
+if(li.Selected)
+{
+ListBox2.Items.Add(li);
+}
+}
+
+foreach(ListItem li in ListBox2.Items)
+{
+ListBox1.Items.Remove(li.value);
+}
+Label1.Text="";
+ListBox2.ClearSelection();
+}
+else
+{
+}
+}
+then call methods in the button clicks of listbox
+
+
+Query String
+http://localhost:12345/cart.aspx?
+prod=Laptop & email = abc@gmail.com
+
+

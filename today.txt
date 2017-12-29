@@ -1,0 +1,13 @@
+List<string> names = new List<string> {"aaa", "bbb", "ccc"};
+
+session["names"]=names;
+
+if(Session["names"]!=null)
+
+//Label1.Text = (List<string>)Session["names"]
+
+	Session Object
+
+	State management at server level
+
+database is for server side state management
