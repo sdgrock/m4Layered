@@ -1,0 +1,43 @@
+Advantages of asp.net
+
+-Uses standard, event model
+-many server controls
+-inbuilt validations
+-RAD
+-ViewState managed
+
+Disadvantages-
+
+-Testable
+-Strong binding between UI and Event handler
+-ViewState
+
+MVC-
+
+No RAD
+No built in server control
+no ViewState
+
+Testing-
+
+Cohesion is there
+Coupling is not there
+html controls - htmlHelpers
+
+Controller- 
+
+-To handle request
+-View- display
+-Model- handle data
+
+Routing-
+Controller- Dempo
+ActionMethod- Action1
+
+http://localhost:1234/Employees/DisplayEmployee.aspx
+
+[MVC]
+http://localhost:1234/Employees/Display/3
+
+View- untyped(earlier we created)
+View with model - typed view(now we are creating)
