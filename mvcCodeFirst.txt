@@ -1,0 +1,58 @@
+CODE FIRST-
+
+create a model class
+Book.cs
+
+Write the code:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Entity;
+
+namespace MvcCodeFirst.Models
+{
+    public class Book
+    {
+        public int BookID { get; set; }
+        public string BookName { get; set; }
+        public int Price { get; set; }
+        public int YearPublish { get; set; }
+        public int AuthorID { get; set; }
+        public Author Author { get; set; }
+    }
+    public class Author
+    {
+        public int AuthorID { get; set; }
+        public string AuthorName { get; set; }
+        public ICollection<Book> Books { get; set; }
+    }
+    public class MyDBContext : DbContext
+    {
+        public MyDBContext() : base("MyConString") 
+        {
+        }
+
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<Author> Authors { get; set; }
+    }
+   
+}
+
+Add entity framework nudget package
+Add reference System.Data.Entity
+Create a new database
+Add connection string to the web.config
+Right click on Controller
+Add
+Controller
+Give Controller name
+Scafffolding option- MVC controller with read/write actions and views, using 
+Entity FRamework
+Give your Model Class
+Data Context(MvcCodeFirst.Models)
+Add
+Run(-Authors/Index)
+   (-Books/Index)

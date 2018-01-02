@@ -1,0 +1,205 @@
+Route.config cs-
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+
+namespace MvcApplication2
+{
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Person", 
+                    action = "DisplayPersons",
+                    id = UrlParameter.Optional }
+            );
+        }
+    }
+}
+
+Create a model class-
+Person.cs
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace MvcApplication2.Models
+{
+    public class Person
+    {
+        [Required(ErrorMessage = "Person ID is required")]
+        [Range(minimum:1,maximum:500)]
+        public int PersonID { get; set; }
+      
+        [Required(ErrorMessage = "Person Name is required")]
+        [RegularExpression("^([A-Z][a-zA-Z]+)$",
+            ErrorMessage="Invalid Person Name")]
+        [StringLength(maximumLength:40,MinimumLength=3,
+            ErrorMessage="3-40 characters")]
+        public string PersonName { get; set; }
+    }
+}
+
+Add Controller's views-
+1. DisplayPersons
+
+@model IEnumerable<MvcApplication2.Models.Person>
+@{
+    ViewBag.Title = "DisplayPersons";
+}
+
+<h2>DISPLAY ALL PERSONS</h2>
+
+<table border ="1" style="color:black;border-color:red; border-collapse:collapse" >
+        <tr>
+            <td>
+                @Html.DisplayNameFor(x=>x.PersonID)
+            </td>
+            <td>
+                @Html.DisplayNameFor(x=>x.PersonName)
+            </td>
+        </tr>
+     @foreach (var per in Model)
+     {
+        <tr>
+            <td>
+                @Html.DisplayFor(x=>per.PersonID)
+            </td>
+            <td>
+                @Html.DisplayFor(x=>per.PersonName)
+            </td>
+        </tr>
+     }
+
+    </table>
+
+@Html.ActionLink("Create new person","CreatePersons")
+
+2. CreatePersons
+
+@model MvcApplication2.Models.Person
+@{
+    ViewBag.Title = "CreatePersons";
+}
+
+<h2>CREATE NEW PERSON</h2>
+
+@using(Html.BeginForm())
+{
+<table border ="1" style="color:green;border-color:blue; border-collapse:collapse">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(x=>x.PersonID)
+        </td>
+
+        <td>
+            @Html.TextBoxFor(x=>x.PersonID)
+        </td>
+        <td>
+            @Html.ValidationMessageFor(x=>x.PersonID)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayNameFor(x=>x.PersonName)
+        </td>
+
+        <td>
+            @Html.TextBoxFor(x=>x.PersonName)
+        </td>
+        <td>
+            @Html.ValidationMessageFor(x=>x.PersonName)
+        </td>
+    </tr>
+</table>
+<input type="submit" value="Create Person">
+}
+
+3. DeletePersons
+
+@model MvcApplication2.Models.Person
+
+@{
+    ViewBag.Title = "DeleteAPerson";
+}
+
+<h2>Confirm Delete A Person</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.DisplayFor(x=>x.PersonName)
+
+    <br />
+    <input type="submit" value="Delete a Person"/>
+}
+
+
+4. DeletePer
+
+@model MvcApplication2.Models.Person
+
+@{
+    ViewBag.Title = "DeletePer";
+}
+
+<h2>Enter id to delete a Person</h2>
+@using (Html.BeginForm())
+{
+    
+    @Html.TextBoxFor(x=>x.PersonID)
+
+    <br />
+    <input type="submit" value="Delete"/>
+}
+
+
+5.Edit (Update)
+
+@model MvcApplication2.Models.Person
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using(Html.BeginForm())
+{
+<table border ="1" style="color:green;border-color:blue; border-collapse:collapse">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(x=>x.PersonID)
+        </td>
+        <td>
+            @Html.TextBoxFor(x=>x.PersonID, new { @readonly = true})
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(x=>x.PersonName)
+        </td>
+        <td>
+            @Html.TextBoxFor(x=>x.PersonName)
+        </td>
+    </tr>
+</table>
+    <input type="submit" value="Update Person"/>
+}
+
+run- localhost/classname/viewname
+
+
+
